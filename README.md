@@ -1,2 +1,2 @@
 # PokeAPI.py
-A general + asynchronous wrapper for https://pokeapi.co/ 
+A general + asynchronous API wrapper for https://pokeapi.co/ 
