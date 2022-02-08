@@ -2,6 +2,7 @@ import aiohttp
 import random
 import typing
 import asyncio
+from .pokemon import Pokemon
 
 BASE_URL = "https://pokeapi.co/api/v2/pokemon/"
 
