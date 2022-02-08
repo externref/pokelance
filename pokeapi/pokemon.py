@@ -10,7 +10,21 @@ class Pokemon:
 
     def __str__(self) -> str:
         return self.name
-        
+    
+    @property
+    def raw(self) -> dict:
+        """The raw json data about the Pokémon got from the API's response"""
+        return self.data
+
+    @property
+    def id(self) -> int:
+        """The ID of the Pokémon"""
+        return self.data["id"]
+
+    @property
+    def name(self) -> str:
+        """Name of the Pokémon"""
+        return self.data["name"]
     
 
     
