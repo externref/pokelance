@@ -24,13 +24,8 @@ class Sprite:
     @property
     def back_default(self) -> Optional[str] :
         return self.data.get('back_default')
+    
+    @property
+    def back_female(self) -> Optional[str]:
+        return self.data.get('back_female')
 
-sprites= {
-    "back_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/132.png",
-    "back_female": None,
-    "back_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/132.png",
-    "back_shiny_female": None,
-    "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png",
-    "front_female": None,
-    "front_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/132.png",
-    "front_shiny_female": None,}
