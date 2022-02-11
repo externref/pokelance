@@ -1,15 +1,13 @@
-
-
+from .sprites import Sprite
 class Pokemon:
     """
     Class for a Pokémon with most of the information about the Pokémons avaiable as an attribute.
     Complete info can be accessed with `Pokemon.raw` as an dictionary ( json response from the API ).
     """
 
-    def __init__(self,client,  data: dict) -> None:
+    def __init__(self, client, data: dict) -> None:
         self.data = data
         self._client = client
-    
 
     def __str__(self) -> str:
         return self.name
@@ -28,3 +26,7 @@ class Pokemon:
     def name(self) -> str:
         """Name of the Pokémon"""
         return self.data["name"]
+    
+    @property
+    def sprites(self) -> Sprite:
+        return Sprite(self.data['sprties'])
