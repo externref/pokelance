@@ -66,7 +66,7 @@ class Client:
         if self._cache:
             cached_data = self._cache.pokemon_cache.get(pokemon)
             if cached_data:
-                return cached_data
+                return Pokemon(self, cached_data)
 
         async with aiohttp.ClientSession() as session:
 
