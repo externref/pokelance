@@ -37,9 +37,7 @@ class Client:
 
     @property
     def cache(self) -> Optional[CacheImpl]:
-        """Returns the `CacheImpl` object for the `Client` if cache is enabled
-        
-        """
+        """Returns the `CacheImpl` object for the `Client` if cache is enabled"""
         return self._cache
 
     async def get_pokemon(self, pokemon: Union[int, str] = None) -> Pokemon:
