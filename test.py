@@ -1,12 +1,12 @@
 import asyncio
-from pokeapi import Client
+from discmon import Client, Pokemon
 
 client = Client()
 
 
 async def main():
-    pokemon = await client.get_pokemon("charmander")
-    print(pokemon)
+    pokemon: Pokemon = await client.get_pokemon("charmander")
+    print(client.cache.pokemon_cache.keys())
 
 
 asyncio.run(main())
