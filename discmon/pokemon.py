@@ -2,8 +2,7 @@ from .sprites import Sprite
 
 
 class Pokemon:
-    """
-    Class for a Pokémon with most of the information about the Pokémons avaiable as an attribute.
+    """Class for a Pokémon with most of the information about the Pokémons avaiable as an attribute.
     Complete info can be accessed with `Pokemon.raw` as an dictionary ( json response from the API ).
     """
 
