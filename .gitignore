@@ -1,4 +1,6 @@
 test.py
+poetry.lock
+.replit
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
