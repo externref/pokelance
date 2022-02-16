@@ -32,4 +32,4 @@ class Pokemon:
     @property
     def sprites(self) -> Sprite:
         """`Sprite` object for the Pokémon with properites for urls"""
-        return Sprite(self.data["sprties"])
+        return Sprite(self.data["sprites"])
