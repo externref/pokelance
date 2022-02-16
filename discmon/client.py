@@ -1,6 +1,5 @@
 import random
-import asyncio
-from typing import Union
+from typing import Union, Optional
 
 import aiohttp
 
@@ -32,9 +31,16 @@ class Client:
     """
 
     def __init__(self, cache: bool = True) -> None:
-        self.cache = None
+        self._cache = None
         if cache:
-            self.cache = CacheImpl(self)
+            self._cache = CacheImpl(self)
+
+    @property
+    def cache(self) -> Optional[CacheImpl]:
+        """Returns the `CacheImpl` object for the `Client` if cache is enabled
+        
+        """
+        return self._cache
 
     async def get_pokemon(self, pokemon: Union[int, str] = None) -> Pokemon:
         """A method used to get the Pokémon.
@@ -57,8 +63,8 @@ class Client:
         if not pokemon:
             pokemon = random.randint(1, 500)
         req_url = f"{BASE_URL}{pokemon}"
-        if self.cache :
-            cached_data = self.cache.pokemon_cache.get(pokemon)
+        if self._cache:
+            cached_data = self._cache.pokemon_cache.get(pokemon)
             if cached_data:
                 return cached_data
 
@@ -73,10 +79,10 @@ class Client:
             raise PokemonNotFound(pokemon)
 
         data = await response.json()
-        if self.cache:
-            self.cache.pokemon_cache[data["id"]] = data
-            self.cache.pokemon_cache[data["name"]] = data
-            self.cache.sprites_cache_impl[data['id']] = data['sprites']
-            self.cache.sprites_cache_impl[data['name']] = data['sprites']
+        if self._cache:
+            self._cache.pokemon_cache[data["id"]] = data
+            self._cache.pokemon_cache[data["name"]] = data
+            self._cache.sprites_cache_impl[data["id"]] = data["sprites"]
+            self._cache.sprites_cache_impl[data["name"]] = data["sprites"]
 
         return Pokemon(self, data)

@@ -1,4 +1,6 @@
 from .sprites import Sprite
+
+
 class Pokemon:
     """
     Class for a Pokémon with most of the information about the Pokémons avaiable as an attribute.
@@ -26,7 +28,8 @@ class Pokemon:
     def name(self) -> str:
         """Name of the Pokémon"""
         return self.data["name"]
-    
+
     @property
     def sprites(self) -> Sprite:
-        return Sprite(self.data['sprties'])
+        """`Sprite` object for the Pokémon with properites for urls"""
+        return Sprite(self.data["sprties"])
