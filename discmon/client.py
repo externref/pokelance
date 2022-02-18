@@ -15,45 +15,37 @@ class Client:
 
     This class is made to define a object which would send requests and recieve raw data from the API.
 
-    Parameters:
+    Parameters
     -----------
-
-    cache: :class:`bool`
-        A bool identifying if the Client should cache response from urls on every API requests or not.
-        True will cache the data, False won't (defaulted to True).
-
-    Attributes:
-    -----------
-
-    cache: :class:`CacheImpl`
-        The cache class with all the cached data.
-
+        cache_data: :class:`bool`
+            A bool identifying if the Client should cache response from urls on every API requests or not.
+            True will cache the data, False won't. (defaulted to True).
     """
 
-    def __init__(self, cache: bool = True) -> None:
+    def __init__(self, cache_data: bool = True) -> None:
         self._cache = None
-        if cache:
+        if cache_data:
             self._cache = CacheImpl(self)
 
     @property
     def cache(self) -> Optional[CacheImpl]:
-        """Returns the `CacheImpl` object for the `Client` if cache is enabled"""
+        """Returns the :class:`.CacheImpl` object for the :class:`.Client` if cache is enabled"""
         return self._cache
 
     async def get_pokemon(self, pokemon: Union[int, str] = None) -> Pokemon:
         """A method used to get the Pokémon.
 
-        This method is used to get a `Pokémon` object either from the cache or the API.
+        This method is used to get a :class:`Pokemon` object either from the cache or the API.
 
-        Parameters:
-        -----------
+        Parameters
+        ----------
 
         pokemon: :class:`Union[int, str]`
             The id or name of the Pokémon to get data of.
             Gets a random Pokemon if no value provided
 
-        Returns:
-        --------
+        Returns
+        -------
 
         :class:`Pokemon`
         """
