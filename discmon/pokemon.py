@@ -3,7 +3,7 @@ from .sprites import Sprite
 
 class Pokemon:
     """Class for a Pokémon with most of the information about the Pokémons avaiable as an attribute.
-    Complete info can be accessed with `Pokemon.raw` as an dictionary ( json response from the API ).
+    Complete info can be accessed with :class:`Pokemon.raw` as an dictionary ( json response from the API ).
     """
 
     def __init__(self, client, data: dict) -> None:
