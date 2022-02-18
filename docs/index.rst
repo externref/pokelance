@@ -9,9 +9,8 @@ Welcome to discmon's documentation!
 .. toctree::
 
    intro.md
-   client.rst
-   cache.rst
-   pokemon.rst
+   API Reference <API/api.rst>
+   Error Reference <API/error_reference.rst>
 
 Indices and tables
 ==================
