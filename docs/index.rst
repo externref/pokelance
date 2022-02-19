@@ -17,8 +17,10 @@ Welcome to discmon's documentation!
 
 ``discmon`` is a asynchronous Python API wrapper for `pokeapi.co <https://pokeapi.co>`_ built with ``aiohttp``
 
-Source : `sarthak-py/discmon <https://github.com/sarthak-py/discmon>`_
 Refer to ``Getting Started`` to begin with development!
+
+Source : `sarthak-py/discmon <https://github.com/sarthak-py/discmon>`_
+
 
 **Contributions**
 
