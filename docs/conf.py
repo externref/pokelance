@@ -9,7 +9,7 @@ project = "discmon"
 copyright = "2022, sarthak-py"
 author = "sarthak-py"
 
-release = "0.1.0-alpha"
+release = "0.1.0.dev1"
 
 extensions = [
     "myst_parser",
@@ -22,6 +22,6 @@ extensions = [
 templates_path = ["_templates"]
 
 exclude_patterns = []
-html_theme = "sphinx_rtd_theme"
+html_theme = "furo" #"sphinx_rtd_theme"
 html_static_path = ["_static"]
 source_suffix = [".rst", ".md"]
