@@ -21,7 +21,7 @@ import asyncio
 
 import discmon
 
-client = discmon.Client(cache=True)
+client = discmon.Client(cache_data=True)
 
 async def main(pokemon: typing.Union[int, str] = None) -> typing.Optional[discmon.Pokemon]:
     pokemon = await client.get_pokemon(pokemon)
