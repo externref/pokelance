@@ -14,13 +14,12 @@ BASE_URL = "https://pokeapi.co/api/v2/pokemon/"
 class Client:
     """The Client class with all the methods related to Base API.
 
-    This class is made to define a object which would send requests and recieve raw data from the API.
+    This class is made to define an object which would send requests and receive raw data from the API.
 
     Parameters
     -----------
         cache_data: :class:`bool`
-            A bool identifying if the Client should cache response from urls on every API requests or not.
-            True will cache the data, False won't. (defaulted to True).
+            A bool identifying if the Client should cache the response from URLs on every API request or not.
     """
 
     def __init__(self, cache_data: bool = True) -> None:
@@ -36,7 +35,7 @@ class Client:
         return self._cache
 
     def save_cache(self) -> None:
-        """Save all the cached data into a json file named `cached.json`"""
+        """Save all the cached data into a JSON file named `cached.json`"""
         cached_data = self.cache
         with open("cached.json", "w") as cachefile:
             json.dump(cached_data, cachefile)
@@ -50,8 +49,8 @@ class Client:
         ----------
 
         pokemon: :class:`Union[int, str]`
-            The id or name of the Pokémon to get data of.
-            Gets a random Pokemon if no value provided
+            The id or name of the Pokémon to get data about.
+            Gets a random Pokemon if no value is provided.
 
         Returns
         -------

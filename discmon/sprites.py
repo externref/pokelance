@@ -14,7 +14,7 @@ class Sprite:
 
     @property
     def official_artwork(self) -> Optional[str]:
-        """Offical artwork from the Company """
+        """Official artwork from the Company """
         return (self.data["other"]["official-artwork"]).get("front_default")
 
     @property

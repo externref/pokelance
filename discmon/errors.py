@@ -12,7 +12,7 @@ class PokemonNotFound(PokeAPIException):
 
     def __init__(self, entry) -> None:
         super().__init__(
-            'No Pokémon with name or ID "{}" was found. Check if your provided the correct arguments and the website is online.'.format(
+            'No Pokémon with name or ID "{}" was found. Check if you provided the correct arguments and the website is online.'.format(
                 entry
             )
         )

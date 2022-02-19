@@ -2,8 +2,8 @@ from .sprites import Sprite
 
 
 class Pokemon:
-    """Class for a Pokémon with most of the information about the Pokémons avaiable as an attribute.
-    Complete info can be accessed with :class:`Pokemon.raw` as an dictionary ( json response from the API ).
+    """Class for a Pokémon with most of the information about the Pokémons available as an attribute.
+    Complete info can be accessed with :class:`Pokemon.raw` as a dictionary ( JSON response from the API ).
     """
 
     def __init__(self, client, data: dict) -> None:
@@ -15,7 +15,7 @@ class Pokemon:
 
     @property
     def raw(self) -> dict:
-        """The raw json data about the Pokémon got from the API's response"""
+        """The raw JSON data about the Pokémon got from the API's response"""
         return self.data
 
     @property
@@ -30,5 +30,5 @@ class Pokemon:
 
     @property
     def sprites(self) -> Sprite:
-        """`Sprite` object for the Pokémon with properites for urls"""
+        """:class:`.Sprite` object for the Pokémon with properties for URLs"""
         return Sprite(self.data["sprites"])
