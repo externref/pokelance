@@ -38,7 +38,7 @@ class Client:
         """Save all the cached data into a JSON file named `cached.json`"""
         cached_data = self.cache
         with open("cached.json", "w") as cachefile:
-            json.dump(cached_data, cachefile)
+            json.dump(cached_data.pokemon_cache_impl, cachefile)
 
     async def get_pokemon(self, pokemon: Union[int, str] = None) -> Pokemon:
         """A method used to get the Pokémon.
