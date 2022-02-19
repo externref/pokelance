@@ -13,7 +13,7 @@ setup(
     description="An (Unfinished) async API wrapper for https://pokeapi.co for Discord Bots ( can be used in any asyncio program )",
     long_description=long_description(),
     long_description_content_type="text/markdown",
-    version="0.1.0",
+    version="0.1.0.dev1",
     packages=find_packages(where=".", exclude=["tests"]),
     keywords=["pokemon", "pokeapi", "pokecord"],
     install_requires=[
