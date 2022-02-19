@@ -1,12 +1,18 @@
 """Install packages as defined in this file into the Python environment."""
 from setuptools import setup, find_packages
 
+def long_description():
+    with open("README.md") as fp:
+        return fp.read()
+
 setup(
     name="discmon",
     author="sarthak-py",
     author_email="shiva02939@gmail.com",
     url="https://github.com/sarthak-py/discmon",
     description="An (Unfinished) async API wrapper for https://pokeapi.co for Discord Bots ( can be used in any asyncio program )",
+    long_description=long_description(),
+    long_description_content_type="text/markdown",
     version="0.1.0",
     packages=find_packages(where=".", exclude=["tests"]),
     keywords=["pokemon", "pokeapi", "pokecord"],
