@@ -15,7 +15,7 @@ Welcome to discmon's documentation!
 
 ----
 
-``discmon`` is a asynchronous Python API wrapper for `pokeapi.co <https://pokeapi.co>`_ built with ``aiohttp``
+``discmon`` is an asynchronous Python API wrapper for `pokeapi.co <https://pokeapi.co>`_ built with ``aiohttp``
 
 Refer to ``Getting Started`` to begin with development!
 
