@@ -10,10 +10,10 @@ setup(
     author="sarthak-py",
     author_email="shiva02939@gmail.com",
     url="https://github.com/sarthak-py/discmon",
-    description="An (Unfinished) async API wrapper for https://pokeapi.co for Discord Bots ( can be used in any asyncio program )",
+    description="An async API wrapper for pokeapi.co",
     long_description=long_description(),
     long_description_content_type="text/markdown",
-    version="0.1.1.dev1",
+    version="0.1.0.dev2",
     packages=find_packages(where=".", exclude=["tests"]),
     keywords=["pokemon", "pokeapi", "pokecord"],
     install_requires=[
