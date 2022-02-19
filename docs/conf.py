@@ -9,7 +9,7 @@ project = "discmon"
 copyright = "2022, sarthak-py"
 author = "sarthak-py"
 
-release = "0.1.0.dev2"
+release ="0.1.0.dev3"
 
 extensions = [
     "myst_parser",

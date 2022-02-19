@@ -13,7 +13,7 @@ setup(
     description="An async API wrapper for pokeapi.co",
     long_description=long_description(),
     long_description_content_type="text/markdown",
-    version="0.1.0.dev2",
+    version="0.1.0.dev3",
     packages=find_packages(where=".", exclude=["tests"]),
     keywords=["pokemon", "pokeapi", "pokecord"],
     install_requires=[
