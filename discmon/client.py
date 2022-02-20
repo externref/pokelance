@@ -2,13 +2,12 @@ import json
 import random
 from typing import Union, Optional
 
-import aiohttp
-
+from .http import HTTPClient
 from .cache import CacheImpl
 from .pokemon import Pokemon
-from .errors import PokemonNotFound, ConnectionError, CacheDisabled
+from .errors import CacheDisabled
 
-BASE_URL = "https://pokeapi.co/api/v2/pokemon/"
+__all__ = ("Client",)
 
 
 class Client:
@@ -23,6 +22,7 @@ class Client:
     """
 
     def __init__(self, cache_data: bool = True) -> None:
+        self.http = HTTPClient()
         self._cache = None
         if cache_data:
             self._cache = CacheImpl(self)
@@ -60,23 +60,13 @@ class Client:
 
         if not pokemon:
             pokemon = random.randint(1, 500)
-        req_url = f"{BASE_URL}{pokemon}"
         if self._cache:
             cached_data = self._cache.pokemon_cache.get(pokemon)
             if cached_data:
                 return Pokemon(self, cached_data)
 
-        async with aiohttp.ClientSession() as session:
+        data = await self.http.fetch_pokemon_data(pokemon)
 
-            try:
-                response = await session.get(req_url)
-            except aiohttp.ClientConnectionError:
-                raise ConnectionError()
-
-        if response.status == 404:
-            raise PokemonNotFound(pokemon)
-
-        data = await response.json()
         if self._cache:
             self._cache.pokemon_cache[data["id"]] = data
             self._cache.pokemon_cache[data["name"]] = data

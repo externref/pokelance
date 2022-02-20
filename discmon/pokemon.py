@@ -1,5 +1,7 @@
 from .sprites import Sprite
 
+__all__ = ("Pokemon",)
+
 
 class Pokemon:
     """Class for a Pokémon with most of the information about the Pokémons available as an attribute.
@@ -24,11 +26,12 @@ class Pokemon:
     height: int
     weight: int
     order: int
+    is_default: bool
 
     def __init__(self, client, data: dict) -> None:
         self.data = data
         self._client = client
-        self.add_basic_attrs(data)
+        self._add_basic_attrs(data)
 
     def __str__(self) -> str:
         return self.name
@@ -38,12 +41,13 @@ class Pokemon:
         """The raw JSON data about the Pokémon got from the API's response"""
         return self.data
 
-    def add_basic_attrs(self, data) -> None:
+    def _add_basic_attrs(self, data) -> None:
         self.name = data["name"]
         self.id = data["id"]
         self.height = data["height"]
         self.weight = data["weight"]
         self.order = data["order"]
+        self.is_default = data["is_default"]
 
     @property
     def sprites(self) -> Sprite:
