@@ -3,6 +3,8 @@ from typing import Union, Optional
 from .sprites import Sprite
 from .pokemon import Pokemon
 
+__all__ = ("CacheImpl",)
+
 
 class CacheImpl:
     """The class managing cache for the Client.

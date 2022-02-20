@@ -1,14 +1,31 @@
+from typing import Union
+
 import aiohttp
 
+__all__ = (
+    "PokelanceException",
+    "PokemonNotFound",
+    "ConnectionError",
+    "CacheDisabled",
+)
 
-class PokeAPIException(Exception):
+
+class PokelanceException(Exception):
     """Base Exception for all the errors raise by the wrapper."""
 
     ...
 
 
-class PokemonNotFound(PokeAPIException):
-    """Raised when no Pokémon with the ID/name provided in :class:`Client.get_pokemon` is found."""
+class PokemonNotFound(PokelanceException):
+    """Raised when no Pokémon with the ID/name provided in :class:`Client.get_pokemon` is found.
+
+    Attributes
+    ----------
+        identity: :class:`Union[int, str]`
+            The argument supplied to get the Pokémon
+    """
+
+    identity: Union[int, str]
 
     def __init__(self, entry) -> None:
         super().__init__(
@@ -16,9 +33,10 @@ class PokemonNotFound(PokeAPIException):
                 entry
             )
         )
+        self.identity = entry
 
 
-class ConnectionError(aiohttp.ClientConnectionError, PokeAPIException):
+class ConnectionError(aiohttp.ClientConnectionError, PokelanceException):
     """Raised when the Client is unable to connect with the API."""
 
     def __init__(self) -> None:
@@ -27,7 +45,7 @@ class ConnectionError(aiohttp.ClientConnectionError, PokeAPIException):
         )
 
 
-class CacheDisabled(PokeAPIException):
+class CacheDisabled(PokelanceException):
     """Raised when user tries to access :class:`Client.cache` with cache options set to false."""
 
     def __init__(self) -> None:

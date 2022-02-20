@@ -1,5 +1,7 @@
 from typing import Optional
 
+__all__ = ("Sprite",)
+
 
 class Sprite:
     """The sprites for the Pokémon Object."""

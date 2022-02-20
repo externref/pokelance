@@ -1,12 +1,12 @@
 Errors
 ======
 
-.. currentmodule:: discmon
+.. currentmodule:: pokelance
 
 PokeAPIException
 ----------------
 
-.. autoclass:: PokeAPIException
+.. autoclass:: PokelanceException
 
 PokemonNotFound
 ---------------

@@ -1,5 +1,7 @@
 import aiohttp
 
+__all__ = ("Generation",)
+
 
 class Generation:
     def __init__(self, raw_gen_data) -> None:

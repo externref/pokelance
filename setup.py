@@ -7,12 +7,12 @@ def long_description():
         return fp.read()
 
 
-version = __import__("discmon.__init__").__version__
+version = __import__("pokelance.__init__").__version__
 setup(
-    name="discmon",
+    name="pokelance",
     author="sarthak-py",
     author_email="shiva02939@gmail.com",
-    url="https://github.com/sarthak-py/discmon",
+    url="https://github.com/sarthak-py/pokelance",
     description="An async API wrapper for pokeapi.co",
     long_description=long_description(),
     long_description_content_type="text/markdown",
