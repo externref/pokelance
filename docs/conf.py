@@ -5,11 +5,11 @@ sys.path.insert(0, os.path.abspath("."))
 sys.path.insert(0, os.path.abspath(".."))
 sys.path.insert(0, os.path.abspath("../"))
 
-project = "discmon"
+project = "pokelance"
 copyright = "2022, sarthak-py"
 author = "sarthak-py"
 
-release = __import__("discmon.__init__").__version__
+release = __import__("pokelance.__init__").__version__
 
 extensions = [
     "myst_parser",

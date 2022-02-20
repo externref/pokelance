@@ -6,7 +6,7 @@ requires = ["poetry-core>=1.0.0"]
 [tool.poetry]
 authors = ["sarthak-py"]
 description = "An Pokeapi API wrapper made for discord bots/async code."
-name = "discmon"
+name = "pokelance"
 version = "0.1.0"
 
 [tool.poetry.dependencies]

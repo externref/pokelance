@@ -2,7 +2,7 @@ API Reference
 =============
 The API Reference for the library which includes all the Classes and methods.
 
-.. currentmodule:: discmon
+.. currentmodule:: pokelance
 
 .. 
 

@@ -23,9 +23,7 @@ class Client:
 
     def __init__(self, cache_data: bool = True) -> None:
         self.http = HTTPClient()
-        self._cache = None
-        if cache_data:
-            self._cache = CacheImpl(self)
+        self._cache = CacheImpl(self) if cache_data else None
 
     @property
     def cache(self) -> Optional[CacheImpl]:
@@ -34,11 +32,17 @@ class Client:
             raise CacheDisabled()
         return self._cache
 
-    def save_cache(self) -> None:
-        """Save all the cached data into a JSON file named `cached.json`"""
+    def save_pokemon_cache(self) -> None:
+        """Save all the cached Pokémon data into a JSON file named `cached_pokemons.json`"""
         cached_data = self.cache
-        with open("cached.json", "w") as cachefile:
+        with open("cached_pokemons.json", "w") as cachefile:
             json.dump(cached_data.pokemon_cache_impl, cachefile)
+    
+    def load_pokemon_cache(self) -> None:
+        cached_data = self.cache
+        with open("cached_pokemons.json", "r") as cachefile:
+            data = json.load(cachefile) 
+            cached_data.pokemon_cache_impl.update
 
     async def get_pokemon(self, pokemon: Union[int, str] = None) -> Pokemon:
         """A method used to get the Pokémon.
@@ -60,7 +64,7 @@ class Client:
 
         if not pokemon:
             pokemon = random.randint(1, 500)
-        if self._cache:
+        if self._cache is not None:
             cached_data = self._cache.pokemon_cache.get(pokemon)
             if cached_data:
                 return Pokemon(self, cached_data)

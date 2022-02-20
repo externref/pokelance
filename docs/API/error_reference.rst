@@ -1,7 +1,7 @@
 Errors
 ======
 
-.. currentmodule:: discmon
+.. currentmodule:: pokelance
 
 PokeAPIException
 ----------------

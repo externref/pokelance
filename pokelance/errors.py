@@ -3,20 +3,20 @@ from typing import Union
 import aiohttp
 
 __all__ = (
-    "PokeAPIException",
+    "PokelanceException",
     "PokemonNotFound",
     "ConnectionError",
     "CacheDisabled",
 )
 
 
-class PokeAPIException(Exception):
+class PokelanceException(Exception):
     """Base Exception for all the errors raise by the wrapper."""
 
     ...
 
 
-class PokemonNotFound(PokeAPIException):
+class PokemonNotFound(PokelanceException):
     """Raised when no Pokémon with the ID/name provided in :class:`Client.get_pokemon` is found.
 
     Attributes
@@ -36,7 +36,7 @@ class PokemonNotFound(PokeAPIException):
         self.identity = entry
 
 
-class ConnectionError(aiohttp.ClientConnectionError, PokeAPIException):
+class ConnectionError(aiohttp.ClientConnectionError, PokelanceException):
     """Raised when the Client is unable to connect with the API."""
 
     def __init__(self) -> None:
@@ -45,7 +45,7 @@ class ConnectionError(aiohttp.ClientConnectionError, PokeAPIException):
         )
 
 
-class CacheDisabled(PokeAPIException):
+class CacheDisabled(PokelanceException):
     """Raised when user tries to access :class:`Client.cache` with cache options set to false."""
 
     def __init__(self) -> None:

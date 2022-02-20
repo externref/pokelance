@@ -1,14 +1,14 @@
 # Getting Started
 
-[![PyPI](https://img.shields.io/pypi/v/discmon)](https://pypi.org/project/discmon/)
+[![PyPI](https://img.shields.io/pypi/v/pokelance)](https://pypi.org/project/pokelance/)
 
 ## Installation
 ```bash
-$python -m pip install discmon
+$python -m pip install pokelance
 ```
 The PYPI version is not as updated as the current git branch so you may consider installing the library from git instead.
 ```bash
-$python -m pip install git+https://github.com/sarthak-py/discmon
+$python -m pip install git+https://github.com/sarthak-py/pokelance
 ```
 ## Example
 ```py
@@ -16,11 +16,11 @@ $python -m pip install git+https://github.com/sarthak-py/discmon
 import typing
 import asyncio
 
-import discmon
+import pokelance
 
-client = discmon.Client(cache_data=True)
+client = pokelance.Client(cache_data=True)
 
-async def main(pokemon: typing.Union[int, str] = None) -> typing.Optional[discmon.Pokemon]:
+async def main(pokemon: typing.Union[int, str] = None) -> typing.Optional[pokelance.Pokemon]:
     pokemon = await client.get_pokemon(pokemon)
     return pokemon
 
