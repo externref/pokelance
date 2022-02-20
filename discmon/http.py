@@ -6,7 +6,8 @@ from .errors import PokemonNotFound, ConnectionError
 
 BASE_URL = "https://pokeapi.co/api/v2/pokemon/"
 
-__all__ = ('HTTPClient',)
+__all__ = ("HTTPClient",)
+
 
 class HTTPClient:
     async def fetch_pokemon_data(
