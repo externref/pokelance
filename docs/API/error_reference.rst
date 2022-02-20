@@ -6,7 +6,7 @@ Errors
 PokeAPIException
 ----------------
 
-.. autoclass:: PokeAPIException
+.. autoclass:: PokelanceException
 
 PokemonNotFound
 ---------------
