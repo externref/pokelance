@@ -10,7 +10,7 @@
 .. |b5| image:: https://img.shields.io/github/stars/sarthak-py/pokelance
 
 Welcome to pokelance's documentation!
-===================================
+=====================================
 |b1| |b2| |b3| |b4| |b5|
 
 ----
