@@ -1,5 +1,5 @@
-sphinx_book_theme
-myst-parser
-sphinx
-aiohttp
-furo
+sphinx_book_theme >= "0.2.0"
+myst-parser >= "0.17.0"
+sphinx >= "4.4.0"
+aiohttp >= "3.8.1"
+furo >= "2022.2.14.1"
