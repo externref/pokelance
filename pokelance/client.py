@@ -3,7 +3,7 @@ import random
 from typing import Union, Optional
 
 from .http import HTTPClient
-from .cache import CacheImpl
+from .cache import Cache
 from .pokemon import Pokemon
 from .errors import CacheDisabled
 
@@ -23,11 +23,11 @@ class Client:
 
     def __init__(self, cache_data: bool = True) -> None:
         self.http = HTTPClient()
-        self._cache = CacheImpl(self) if cache_data else None
+        self._cache = Cache(self) if cache_data else None
 
     @property
-    def cache(self) -> Optional[CacheImpl]:
-        """Returns the :class:`.CacheImpl` object for the :class:`.Client` if cache is enabled"""
+    def cache(self) -> Optional[Cache]:
+        """Returns the :class:`.Cache` object for the :class:`.Client` if cache is enabled"""
         if not self._cache:
             raise CacheDisabled()
         return self._cache
