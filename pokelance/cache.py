@@ -1,4 +1,4 @@
-from typing import Union, Optional, Dict, TypedDict
+from typing import Union, Optional, Dict
 
 from .sprites import Sprite
 from .pokemon import Pokemon
@@ -24,12 +24,12 @@ class Cache:
         self.client = client
 
     @property
-    def pokemon_cache(self) -> dict:
+    def pokemon_cache(self) -> Dict[str, Union[Dict, str, int, bool, None]]:
         """Returns all the cached data about pokémons in a dictionary form."""
         return self._pokemon_cache_data
 
     @property
-    def sprite_cache(self) -> dict:
+    def sprite_cache(self) -> Dict[str, Union[str, Dict]]:
         """Returns all the cached sprite data in a dictionary form."""
         return self._sprites_cache_data
 
@@ -37,7 +37,7 @@ class Cache:
         """Get's the cached :class:`.Pokemon` for the `identity` entered."""
         return Pokemon(self.pokemon_cache.get(str(identity))) if self.pokemon_cache.get(str(identity)) else None
 
-    def get_sprite_for(self, pokemon: Union[Pokemon, int, str]) -> Optional[dict]:
+    def get_sprite_for(self, pokemon: Union[Pokemon, int, str]) -> Optional[Sprite]:
         """Get's the cached :class:`.Sprite` for the pokemon entered."""
         if isinstance(pokemon, Pokemon):
             pokemon = pokemon.name
