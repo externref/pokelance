@@ -20,11 +20,11 @@ Pokémon object with info about Pokémons.
 .. autoclass:: Pokemon
     :members:
 
-CacheImpl
+Cache
 ---------
 Cache-ing your data.
 
-.. autoclass:: CacheImpl
+.. autoclass:: Cache
     :members:
 
 Sprite
