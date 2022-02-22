@@ -1,4 +1,3 @@
-from lib2to3.pgen2.token import OP
 import aiohttp
 from typing import Union, Optional
 from .pokemon import Pokemon
