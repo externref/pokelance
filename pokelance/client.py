@@ -2,6 +2,8 @@ import json
 import random
 from typing import Union, Optional
 
+from pokelance.sprites import Sprite
+
 from .http import HTTPClient
 from .cache import Cache
 from .pokemon import Pokemon
@@ -25,6 +27,16 @@ class Client:
         self.http = HTTPClient()
         self._cache = Cache(self) if cache_data else None
 
+    def _update_cache(self, data: dict) -> None:
+        self._cache.pokemon_cache[data["id"]] = data
+        self._cache.pokemon_cache[data["name"]] = data
+        self._cache.sprites_cache_data[data["id"]] = data["sprites"]
+        self._cache.sprites_cache_data[data["name"]] = data["sprites"]
+
+    async def close_session(self) -> None:
+        """Closes the current :class:`.Client` session."""
+        await self.http.session.close()
+
     @property
     def cache(self) -> Optional[Cache]:
         """Returns the :class:`.Cache` object for the :class:`.Client` if cache is enabled"""
@@ -36,13 +48,13 @@ class Client:
         """Save all the cached Pokémon data into a JSON file named `cached_pokemons.json`"""
         cached_data = self.cache
         with open("cached_pokemons.json", "w") as cachefile:
-            json.dump(cached_data.pokemon_cache_impl, cachefile)
-    
+            json.dump(cached_data._pokemon_cache_data, cachefile)
+
     def load_pokemon_cache(self) -> None:
         cached_data = self.cache
         with open("cached_pokemons.json", "r") as cachefile:
-            data = json.load(cachefile) 
-            cached_data.pokemon_cache_impl.update
+            data = json.load(cachefile)
+            cached_data._pokemon_cache_data.update(data)
 
     async def get_pokemon(self, pokemon: Union[int, str] = None) -> Pokemon:
         """A method used to get the Pokémon.
@@ -63,18 +75,30 @@ class Client:
         """
 
         if not pokemon:
-            pokemon = random.randint(1, 500)
+            pokemon = random.randint(1, 700)
         if self._cache is not None:
-            cached_data = self._cache.pokemon_cache.get(pokemon)
+            cached_data = self._cache.pokemon_cache.get(str(pokemon))
             if cached_data:
                 return Pokemon(self, cached_data)
 
         data = await self.http.fetch_pokemon_data(pokemon)
 
         if self._cache:
-            self._cache.pokemon_cache[data["id"]] = data
-            self._cache.pokemon_cache[data["name"]] = data
-            self._cache.sprites_cache_impl[data["id"]] = data["sprites"]
-            self._cache.sprites_cache_impl[data["name"]] = data["sprites"]
+            self._update_cache(data)
 
         return Pokemon(self, data)
+
+    async def get_sprite_for(self, pokemon: Union[Pokemon, int, str]) -> Sprite:
+        if isinstance(pokemon, Pokemon):
+            pokemon = pokemon.name
+
+        if self._cache is not None:
+            cached_data = self._cache.sprite_cache.get(str(pokemon))
+            return Sprite(cached_data)
+
+        data = await self.http.fetch_pokemon_data(pokemon)
+
+        if self._cache:
+            self._update_cache(data)
+
+        return Sprite(data["sprites"])
