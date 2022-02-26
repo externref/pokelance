@@ -2,10 +2,10 @@ import json
 import random
 from typing import Union, Optional
 
-from pokelance.sprites import Sprite
 
-from .http import HTTPClient
 from .cache import Cache
+from .sprites import Sprite
+from .http import HTTPClient
 from .pokemon import Pokemon
 from .errors import CacheDisabled
 
@@ -30,10 +30,10 @@ class Client:
     def _update_cache(self, data: dict) -> None:
         self._cache.pokemon_cache[data["id"]] = data
         self._cache.pokemon_cache[data["name"]] = data
-        self._cache.sprites_cache_data[data["id"]] = data["sprites"]
-        self._cache.sprites_cache_data[data["name"]] = data["sprites"]
+        self._cache.sprite_cache[data["id"]] = data["sprites"]
+        self._cache.sprite_cache[data["name"]] = data["sprites"]
 
-    async def close_session(self) -> None:
+    async def close_client_session(self) -> None:
         """Closes the current :class:`.Client` session."""
         await self.http.session.close()
 

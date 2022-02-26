@@ -10,12 +10,12 @@ BASE_URL = "https://pokeapi.co/api/v2"
 
 
 class HTTPClient:
-    def __init__(self) -> None:
-        self.session = aiohttp.ClientSession()
-
     """
     Class which deals with all the Requests made to the API.
     """
+
+    def __init__(self) -> None:
+        self.session = aiohttp.ClientSession()
 
     async def fetch_pokemon_data(
         self, pokemon: Union[int, str] = None
