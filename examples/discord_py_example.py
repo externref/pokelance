@@ -12,4 +12,9 @@ async def pokemon(ctx: commands.Context, pokemon_id: int) -> None:
     await ctx.send(f"Pokemon with ID {pokemon_id} is {pokemon.name}")
 
 
+@bot.event
+async def on_disconnect():
+    await pokelance_client.close_client_session()
+
+
 bot.run("TOKEN")

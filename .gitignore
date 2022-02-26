@@ -1,6 +1,7 @@
 test.py
 poetry.lock
 .replit
+.vscode/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

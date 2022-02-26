@@ -18,7 +18,9 @@ class Pokemon:
         weight: :class:`int`
             Weight of the Pokémon
         order: :class:`int`
-            Pokemon Order
+            Pokémon Order
+        is_default: :class:`bool`
+            Is the Pokémon a default one
     """
 
     id: int

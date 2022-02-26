@@ -20,11 +20,11 @@ Pokémon object with info about Pokémons.
 .. autoclass:: Pokemon
     :members:
 
-CacheImpl
+Cache
 ---------
 Cache-ing your data.
 
-.. autoclass:: CacheImpl
+.. autoclass:: Cache
     :members:
 
 Sprite
@@ -32,4 +32,10 @@ Sprite
 Sprite urls for Pokémons.
 
 .. autoclass:: Sprite
+    :members:
+
+.. autoclass:: DreamWorldSprite
+    :members:
+
+.. autoclass:: HomeSprite
     :members:

@@ -1,12 +1,12 @@
-from typing import Union, Optional
+from typing import Any, Union, Optional, Dict
 
 from .sprites import Sprite
 from .pokemon import Pokemon
 
-__all__ = ("CacheImpl",)
+__all__ = ("Cache",)
 
 
-class CacheImpl:
+class Cache:
     """The class managing cache for the Client.
 
     Saving data from API into dictionaries based on categories .
@@ -19,26 +19,34 @@ class CacheImpl:
     """
 
     def __init__(self, client) -> None:
-        self.pokemon_cache_impl = {}
-        self.sprites_cache_impl = {}
+        self._pokemon_cache_data: Dict[str, Any] = {}
+        self._sprites_cache_data: Dict[str, Union[str, Dict]] = {}
         self.client = client
 
     @property
-    def pokemon_cache(self) -> dict:
+    def pokemon_cache(self) -> Dict[str, Any]:
         """Returns all the cached data about pokémons in a dictionary form."""
-        return self.pokemon_cache_impl
+        return self._pokemon_cache_data
 
     @property
-    def sprite_cache(self) -> dict:
+    def sprite_cache(self) -> Dict[str, Union[str, Dict]]:
         """Returns all the cached sprite data in a dictionary form."""
-        return self.sprites_cache_impl
+        return self._sprites_cache_data
 
-    def get_pokemon(self, identity: Union[int, str]) -> Optional[dict]:
-        """Get's the cached :class:`dict` for the `identity` entered."""
-        return self.pokemon_cache.get(identity)
+    def get_pokemon(self, identity: Union[int, str]) -> Optional[Pokemon]:
+        """Get's the cached :class:`.Pokemon` for the `identity` entered."""
+        return (
+            Pokemon(self.client, self.pokemon_cache.get(str(identity)))
+            if self.pokemon_cache.get(str(identity))
+            else None
+        )
 
-    def get_sprite_for(self, pokemon: Union[Pokemon, int, str]) -> Optional[dict]:
-        """Get's the cached :class:`dict` for the `identity` entered."""
+    def get_sprite_for(self, pokemon: Union[Pokemon, int, str]) -> Optional[Sprite]:
+        """Get's the cached :class:`.Sprite` for the pokemon entered."""
         if isinstance(pokemon, Pokemon):
             pokemon = pokemon.name
-        return self.sprites_cache_impl.get(pokemon)
+        return (
+            Sprite(self._sprites_cache_data.get(str(pokemon)))
+            if self._sprites_cache_data.get(str(pokemon))
+            else None
+        )

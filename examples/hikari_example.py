@@ -14,4 +14,9 @@ async def message(event: hikari.MessageCreateEvent):
         await event.message.respond(f"Pokemon with ID {pokemon_id} is {pokemon.name}")
 
 
+@bot.listen()
+async def on_disconnect(event: hikari.ShardDisconnectedEvent):
+    await pokelance_client.close_client_session()
+
+
 bot.run()

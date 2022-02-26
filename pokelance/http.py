@@ -1,26 +1,34 @@
-from lib2to3.pgen2.token import OP
-import aiohttp
-from typing import Union, Optional
-from .pokemon import Pokemon
-from .errors import PokemonNotFound, ConnectionError
+from typing import Any, Dict, Union, Optional
 
-BASE_URL = "https://pokeapi.co/api/v2/pokemon/"
+import aiohttp
+
+from .errors import PokemonNotFound, ConnectionError
 
 __all__ = ("HTTPClient",)
 
+BASE_URL = "https://pokeapi.co/api/v2"
+
 
 class HTTPClient:
+    """
+    Class which deals with all the Requests made to the API.
+    """
+
+    def __init__(self) -> None:
+        self.session = aiohttp.ClientSession()
+
     async def fetch_pokemon_data(
         self, pokemon: Union[int, str] = None
-    ) -> Optional[Pokemon]:
+    ) -> Optional[Dict[str, Any]]:
+        """
+        Getting a JSON response from API for the Pokémon ID provided
+        """
 
-        req_url = f"{BASE_URL}{pokemon}"
-        async with aiohttp.ClientSession() as session:
-
-            try:
-                response = await session.get(req_url)
-            except aiohttp.ClientConnectionError:
-                raise ConnectionError()
+        req_url = f"{BASE_URL}/pokemon/{pokemon}"
+        try:
+            response = await self.session.get(req_url)
+        except aiohttp.ClientConnectionError:
+            raise ConnectionError()
 
         if response.status == 404:
             raise PokemonNotFound(pokemon)

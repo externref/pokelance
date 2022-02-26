@@ -14,6 +14,8 @@ $python -m pip install git+https://github.com/sarthak-py/pokelance
 ```
 
 ## EXAMPLE
+
+You can find more examples in the [examples folder](https://github.com/sarthak-py/pokelance/examples) !
 ```py
 #test.py 
 import typing
@@ -39,4 +41,4 @@ makuhita
 ## NEED HELP?
 Docs : https://pokelance.readthedocs.io/en/latest/
 
-Discord Server : *soon*
+Discord Server : [.gg/ET3GnUpkqH](https://discord.gg/ET3GnUpkqH)
