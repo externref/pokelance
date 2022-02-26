@@ -36,3 +36,6 @@ Sprite urls for Pokémons.
 
 .. autoclass:: DreamWorldSprite
     :members:
+
+.. autoclass:: HomeSprite
+    :members:

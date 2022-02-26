@@ -1,6 +1,6 @@
 from typing import Any, Optional, Dict
 
-__all__ = ("Sprite", "DreamWorldSprite")
+__all__ = ("Sprite", "DreamWorldSprite", "HomeSprite")
 
 
 class DreamWorldSprite:
@@ -24,7 +24,33 @@ class DreamWorldSprite:
 
 
 class HomeSprite:
-    """ """
+    """Home Sprite sprites for the Pokémon
+
+    Attributes
+    ----------
+        front_default: :class:`Optional[str]`
+            The default front home image of the Pokémon.
+
+        front_female: :class:`Optional[str]`
+            The default front dream world image of the Pokémon (female).
+
+        front_shiny: :class:`Optional[str]`
+            Shiny home image for the Pokémon (front).
+
+        front_shiny_female: :class:`Optional[str]`
+            Shiny home image for the Pokémon (female).
+    """
+
+    front_default: Optional[str]
+    front_female: Optional[str]
+    front_shiny: Optional[str]
+    front_shiny_female: Optional[str]
+
+    def __init__(self, data: Dict[str, Optional[str]]) -> None:
+        self.front_default = data["front_default"]
+        self.front_female = data["front_female"]
+        self.front_shiny = data["front_shiny"]
+        self.front_shiny_female = data["front_shiny_female"]
 
 
 class Sprite:
