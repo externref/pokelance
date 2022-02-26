@@ -24,7 +24,7 @@ class Cache:
         self.client = client
 
     @property
-    def pokemon_cache(self) -> Dict[str, Union[Dict, str, int, bool, None]]:
+    def pokemon_cache(self) -> Dict[str, Any]:
         """Returns all the cached data about pokémons in a dictionary form."""
         return self._pokemon_cache_data
 
@@ -36,7 +36,7 @@ class Cache:
     def get_pokemon(self, identity: Union[int, str]) -> Optional[Pokemon]:
         """Get's the cached :class:`.Pokemon` for the `identity` entered."""
         return (
-            Pokemon(self.pokemon_cache.get(str(identity)))
+            Pokemon(self.client, self.pokemon_cache.get(str(identity)))
             if self.pokemon_cache.get(str(identity))
             else None
         )
